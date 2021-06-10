@@ -1,0 +1,14 @@
+version: "3.8"
+
+services:
+  proxy:
+    build: .
+    ports:
+      - '80:80'
+    volumes:
+      - ./:/etc/nginx/conf.d
+      - ../poll_app/staticfiles:/poll_app/staticfiles
+      - ../blog_app/staticfiles:/blog_app/staticfiles
+      - ../blog_app/media:/blog_app/media
+    env_file:
+      - ./.env
